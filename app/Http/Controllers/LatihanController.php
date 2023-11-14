@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\BackPanel;
+namespace App\Http\Controllers;
 
+use App\Models\Latihan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class OfficerController extends Controller
+class LatihanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class OfficerController extends Controller
     public function index()
     {
         //
-        return view('Officer.dashboard');
+        return view('latihan.latihan');
     }
 
     /**
@@ -35,7 +36,7 @@ class OfficerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Latihan $latihan)
     {
         //
     }
@@ -43,7 +44,7 @@ class OfficerController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Latihan $latihan)
     {
         //
     }
@@ -51,7 +52,7 @@ class OfficerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Latihan $latihan)
     {
         //
     }
@@ -59,7 +60,7 @@ class OfficerController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Latihan $latihan)
     {
         //
     }

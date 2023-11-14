@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\BackPanel\AdminController;
+use App\Http\Controllers\BackPanel\AnggotaController as BackPanelAnggotaController;
 use App\Http\Controllers\BackPanel\OfficerController;
+use App\Http\Controllers\JadwalController;
+use App\Http\Controllers\KehadiranController;
+use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Anggota;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,14 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/latihan', [LatihanController::class, 'index'])->name('latihan');
+    Route::get('/kehadiran', [KehadiranController::class, 'index'])->name('kehadiran');
+    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
 });
 
 require __DIR__ . '/auth.php';
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index']);
-});
-
-Route::middleware(['auth', 'role:officer'])->group(function () {
-    Route::get('/officer/dashboard', [OfficerController::class, 'index']);
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/dashboard/anggota', [BackPanelAnggotaController::class, 'index'])->name('anggota');
 });
