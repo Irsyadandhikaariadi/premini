@@ -44,4 +44,7 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/dashboard/anggota', [BackPanelAnggotaController::class, 'index'])->name('anggota');
+    Route::get('/admin/dashboard/edit/{id}', [BackPanelAnggotaController::class, 'edit'])->name('anggota.edit');
+    Route::put('/admin/dashboard/edit/{id}', [BackPanelAnggotaController::class, 'update'])->name('anggota.update');
+    Route::get('/admin/dashboard/delete/{id}', [BackPanelAnggotaController::class, 'destroy'])->name('anggota.destroy');
 });

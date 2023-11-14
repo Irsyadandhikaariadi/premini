@@ -13,6 +13,7 @@
 
   <!-- Styles -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./node_modules/preline/dist/preline.js"></script>
 </head>
 
 <body class="antialiased">

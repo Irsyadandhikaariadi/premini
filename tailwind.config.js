@@ -10,6 +10,7 @@ export default {
         './resources/**/*.blade.php',
         './resources/**/*.js',
         './resources/**/*.vue',
+        'node_modules/preline/dist/*.js',
     ],
 
     theme: {
@@ -20,5 +21,8 @@ export default {
         },
     },
 
-    plugins: [forms],
+    plugins: [
+        forms,
+        require('preline/plugin'),
+    ],
 };
