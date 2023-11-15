@@ -106,51 +106,29 @@
     </div>
   @endif
 
+  <a href="{{ route('latihan.create') }}" class="text-white text-2xl">tambah</a>
   <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-100">
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                  <th scope="col" class="px-6 py-3">
-                    nomer
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    nama
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    email
-                  </th>
-                  <th scope="col" class="px-6 py-3">
-                    tindakan
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                @foreach ($user as $user)
-                  <tr
-                    class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {{ $loop->iteration }}
-                    </th>
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                      {{ $user->name }}
-                    </th>
-                    <td class="px-6 py-4">
-                      {{ $user->email }}
-                    </td>
-                    <td class="px-6 py-4">
-                      <a href="anggota/edit/{{ $user->id }}"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ubah</a>
-                      <a href="anggota/delete/{{ $user->id }}" onclick="return confirm('yakin mau menghapus data ini')"
-                        class="font-medium text-red-600 dark:text-red-500 hover:underline">hapus</a>
-                    </td>
-                  </tr>
-                @endforeach
-              </tbody>
-            </table>
+            @foreach ($MenuLatihan as $latihan)
+              <div
+                class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                <a href="#">
+                  <img class="rounded-t-lg" src="{{ asset('storage/latihan/'.$latihan->gambar)}}" alt="image" />
+                </a>
+                <div class="p-5">
+                  <a href="detail">
+                    <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ $latihan->nama }}</h5>
+                  </a>
+                  <p class="mb-1 font-normal text-sm text-gray-700 dark:text-gray-400">{{ $latihan->jenis }}</p>
+                  <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $latihan->deskripsi }}</p>
+                  <a href="{{ route('latihan.edit', $latihan->id) }}">edit</a>
+                  <a href="{{ route('latihan.destroy', $latihan->id) }}" onclick="return confirm('yakin mau menghapus data latihan ini')">hapus</a>
+                </div>
+              </div>
+            @endforeach
           </div>
         </div>
       </div>

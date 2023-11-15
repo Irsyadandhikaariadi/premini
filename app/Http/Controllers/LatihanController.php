@@ -14,7 +14,8 @@ class LatihanController extends Controller
     public function index()
     {
         //
-        return view('latihan.latihan');
+        $latihan = Latihan::all();
+        return view('latihan.latihan', compact('latihan'));
     }
 
     /**

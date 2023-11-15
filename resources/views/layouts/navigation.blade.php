@@ -16,7 +16,7 @@
             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
               {{ __('Dashboard') }}
             </x-nav-link>
-            <x-nav-link :href="route('latihan')" :active="request()->routeIs('latihan')">
+            <x-nav-link :href="route('latihan.user')" :active="request()->routeIs('latihan')">
               {{ __('Latihan') }}
             </x-nav-link>
             <x-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">
@@ -33,8 +33,11 @@
             <x-nav-link :href="route('anggota')" :active="request()->routeIs('anggota')">
               {{ __('Anggota') }}
             </x-nav-link>
-            <x-nav-link :href="route('latihan')" :active="request()->routeIs('latihan')">
+            <x-nav-link :href="route('latihan.admin')" :active="request()->routeIs('latihan')">
               {{ __('Latihan') }}
+            </x-nav-link>
+            <x-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu')">
+              {{ __('Womenu') }}
             </x-nav-link>
             <x-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">
               {{ __('Kehadiran') }}
