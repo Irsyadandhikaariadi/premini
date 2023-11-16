@@ -7,6 +7,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>{{ config('app.name', 'Gym') }}</title>
+  <link rel="shortcut icon" href="../img/logo.png" type="image/x-icon">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.bunny.net">
