@@ -33,10 +33,10 @@
             <x-nav-link :href="route('anggota')" :active="request()->routeIs('anggota')">
               {{ __('Anggota') }}
             </x-nav-link>
-            <x-nav-link :href="route('latihan.admin')" :active="request()->routeIs('latihan')">
+            <x-nav-link :href="route('latihan.admin')" :active="request()->routeIs('latihan.admin')">
               {{ __('Latihan') }}
             </x-nav-link>
-            <x-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu')">
+            <x-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu.admin')">
               {{ __('Womenu') }}
             </x-nav-link>
             <x-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">

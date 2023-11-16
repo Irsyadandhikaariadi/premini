@@ -9,6 +9,7 @@ class MenuLatihan extends Model
 {
     use HasFactory;
     
+    protected $primaryKey = 'id_menu';
     protected $table = 'menuLatihan';
     protected $fillable = [
         'nama',

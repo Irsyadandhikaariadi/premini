@@ -37,7 +37,7 @@ class LatihanController extends Controller
             'nama' => 'required|string',
             'jenis' => 'required|string',
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
         $gambar = $request->file('gambar');
@@ -59,9 +59,19 @@ class LatihanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
         // You can add logic for showing a specific latihan if needed.
+        // Find the Latihan by ID
+        $latihan = Latihan::findOrFail($id);
+
+        // Check if Latihan is found
+        if (!$latihan) {
+            return redirect()->route('latihan.admin')->with('error', 'Latihan tidak ditemukan.');
+        }
+
+        // Load the show view with Latihan details
+        return view('admin.latihan.show', compact('latihan'));
     }
 
     /**
@@ -93,7 +103,7 @@ class LatihanController extends Controller
             'nama' => 'required|string',
             'jenis' => 'required|string',
             'deskripsi' => 'required|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'gambar' => 'nullable|image|mimes:jpeg,png,jpg',
         ]);
 
         // Check if there are any changes in the latihan data

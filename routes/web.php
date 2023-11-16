@@ -3,7 +3,7 @@
 use App\Http\Controllers\BackPanel\AdminController;
 use App\Http\Controllers\BackPanel\AnggotaController as BackPanelAnggotaController;
 use App\Http\Controllers\BackPanel\LatihanController as BackPanelLatihanController;
-use App\Http\Controllers\WoMenuController;
+use App\Http\Controllers\BackPanel\WoMenuController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\KehadiranController;
 use App\Http\Controllers\LatihanController;
@@ -49,6 +49,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/latihan', [BackPanelLatihanController::class, 'index'])->name('latihan.admin');
     Route::get('/admin/latihan/create', [BackPanelLatihanController::class, 'create'])->name('latihan.create');
     Route::post('/admin/latihan/create', [BackPanelLatihanController::class, 'store'])->name('latihan.store');
+    Route::get('/admin/latihan/show/{id}', [BackPanelLatihanController::class, 'show'])->name('latihan.show');
     Route::get('/admin/latihan/edit/{id}', [BackPanelLatihanController::class, 'edit'])->name('latihan.edit');
     Route::put('/admin/latihan/edit/{id}', [BackPanelLatihanController::class, 'update'])->name('latihan.update');
     Route::get('/admin/latihan/delete/{id}', [BackPanelLatihanController::class, 'destroy'])->name('latihan.destroy');
