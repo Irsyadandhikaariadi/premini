@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Latihan extends Model
 {
@@ -14,9 +15,20 @@ class Latihan extends Model
     
     protected $fillable = [
         'nama',
+        'id_menu',
         'jenis',
         'deskripsi',
         'gambar',
     ];
+
+    /**
+     * Get the user that owns the Latihan
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function menuLatihan(): BelongsTo
+    {
+        return $this->belongsTo(MenuLatihan::class, 'id_menu', 'id_menu');
+    }
 
 }

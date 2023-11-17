@@ -1,5 +1,5 @@
 <x-app-layout>
-  
+
   @include('components.toast')
 
   <div class="py-12">
@@ -42,10 +42,31 @@
                   file</label>
                 <input
                   class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                  aria-describedby="file_input_help" id="file_input" type="file" name="gambar" value="{{ old('gambar') }}">
+                  aria-describedby="file_input_help" id="file_input" type="file" name="gambar"
+                  value="{{ old('gambar') }}">
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">only jpeg, png, jpg</p>
                 @error('gambar')
                   <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+              </div>
+              <div>
+                <div class="flex items-center mb-4">
+                  @foreach ($video as $video)
+                    <input id="video-checkbox-{{ $video->id_menu }}" name="id_menu[]" type="checkbox"
+                      value="{{ $video->id_menu }}"
+                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+
+                    <video width="640" height="360" controls>
+                      @if ($video->video_url)
+                        <source src="{{ asset('storage/womenu/' . $video->video_url) }}" type="video/mp4">
+                      @endif
+                    </video>
+                  @endforeach
+                </div>
+                @error('id_menu')
+                  <span class="invalid-feedback" role="alert">
+                    {{ $message }}
+                  </span>
                 @enderror
               </div>
               <button type="submit" class="p-2 border">tambah</button>

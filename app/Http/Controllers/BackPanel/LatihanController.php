@@ -4,6 +4,7 @@ namespace App\Http\Controllers\BackPanel;
 
 use App\Http\Controllers\Controller;
 use App\Models\Latihan;
+use App\Models\MenuLatihan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -24,7 +25,9 @@ class LatihanController extends Controller
      */
     public function create()
     {
-        return view('admin.latihan.create');
+        $womenu = Latihan::with('menuLatihan')->get();
+        $video = MenuLatihan::all();
+        return view('admin.latihan.create', compact('womenu', 'video'));
     }
 
     /**
@@ -32,19 +35,21 @@ class LatihanController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate the request data.
         $request->validate([
             'nama' => 'required|string',
             'jenis' => 'required|string',
             'deskripsi' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg',
+            'id_menu' => 'required|array',
+            'id_menu.*' => 'in:id_menu',
         ]);
 
+        // Process image upload
         $gambar = $request->file('gambar');
         $nama_gambar = Str::random(20) . '.' . $gambar->getClientOriginalExtension();
-
         $gambar->storeAs('public/latihan', $nama_gambar);
-        // Create a new latihan model.
+
+        // Create a new Latihan model.
         $latihan = Latihan::create([
             'nama' => $request->input('nama'),
             'jenis' => $request->input('jenis'),
@@ -53,25 +58,23 @@ class LatihanController extends Controller
         ]);
 
         // Redirect the user to the list of latihan.
-        return redirect()->route('latihan.admin')->with('success', 'berhasil menambah data latihan');
+        return redirect()->route('latihan.admin')->with('success', 'Berhasil menambah data latihan');
     }
+
 
     /**
      * Display the specified resource.
      */
     public function show($id)
     {
-        // You can add logic for showing a specific latihan if needed.
-        // Find the Latihan by ID
         $latihan = Latihan::findOrFail($id);
+        $womenu = Latihan::with('menuLatihan')->get();
 
-        // Check if Latihan is found
         if (!$latihan) {
             return redirect()->route('latihan.admin')->with('error', 'Latihan tidak ditemukan.');
         }
 
-        // Load the show view with Latihan details
-        return view('admin.latihan.show', compact('latihan'));
+        return view('admin.latihan.show', compact('womenu'));
     }
 
     /**
