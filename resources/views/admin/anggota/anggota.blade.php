@@ -115,67 +115,27 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                            <thead
-                                class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        nomer
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        nama
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        email
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        tindakan
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($user as $user)
-                                    <div
-                                        class="block border border-gray-600 bg-slate-600 font-medium rounded-lg mx-4 my-4 px-4 py-4 max-w-xs">
-                                        {{-- tempat image --}}
-                                        <div class="flex justify-center">
-                                            <img class="w-20 h-20 rounded-full" src="../img/cek.jpeg"
-                                                alt="Large avatar">
-                                        </div>
-                                        {{-- nama --}}
-                                        <p class="text-xl text-white text-center mt-2">{{ $user->name }}</p>
-                                        {{-- gmail --}}
-                                        <p class="text-sm text-white text-center">{{ $user->email }}</p>
-                                        {{-- tombol --}}
-                                        <div class="flex justify-between mx-3 mt-4">
-                                          <a href="anggota/edit/{{ $user->id }}" class="block border border-blue-600 bg-blue-600 rounded-lg font-medium text-white px-2 py-1 hover:bg-blue-800 shadow-lg">Ubah</a>
-                                          <a href="anggota/delete/{{ $user->id }}" onclick="return confirm('yakin mau menghapus data ini?')" class="block border border-red-600 bg-red-600 rounded-lg font-medium text-white px-2 py-1 hover:bg-red-800 shadow-lg">Hapus</a>
-                                        </div>
-                                    </div>
-                                    <tr
-                                        class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $loop->iteration }}
-                                        </th>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {{ $user->name }}
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            {{ $user->email }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <a href="anggota/edit/{{ $user->id }}"
-                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">ubah</a>
-                                            <a href="anggota/delete/{{ $user->id }}"
-                                                onclick="return confirm('yakin mau menghapus data ini')"
-                                                class="font-medium text-red-600 dark:text-red-500 hover:underline">hapus</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                        @foreach ($user as $user)
+                            <div
+                                class="block border border-gray-600 bg-slate-600 font-medium rounded-lg mx-4 my-4 px-4 py-4 max-w-xs">
+                                {{-- tempat image --}}
+                                <div class="flex justify-center">
+                                    <img class="w-20 h-20 rounded-full" src="../img/cek.jpeg" alt="Large avatar">
+                                </div>
+                                {{-- nama --}}
+                                <p class="text-xl text-white text-center mt-2">{{ $user->name }}</p>
+                                {{-- gmail --}}
+                                <p class="text-sm text-white text-center">{{ $user->email }}</p>
+                                {{-- tombol --}}
+                                <div class="flex justify-between mx-3 mt-4">
+                                    <a href="anggota/edit/{{ $user->id }}"
+                                        class="block border border-blue-600 bg-blue-600 rounded-lg font-medium text-white px-2 py-1 hover:bg-blue-800 shadow-lg">Ubah</a>
+                                    <a href="anggota/delete/{{ $user->id }}"
+                                        onclick="return confirm('yakin mau menghapus data ini?')"
+                                        class="block border border-red-600 bg-red-600 rounded-lg font-medium text-white px-2 py-1 hover:bg-red-800 shadow-lg">Hapus</a>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
