@@ -42,7 +42,7 @@
                             {{-- akhir latihan --}}
                             {{-- menuwo --}}
                             <div class="bg-gray-700 rounded-lg max-w-2xl w-56 py-3 my-3 ms-2">
-                                <img class="w-48 h-32 mx-auto rounded-lg" src="../img/food.jpg" alt="">
+                                <img class="w-48 h-32 mx-auto rounded-lg" src="../img/wo.jpg" alt="">
                                 <div class="flex justify-center my-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                         class="w-6 h-6">

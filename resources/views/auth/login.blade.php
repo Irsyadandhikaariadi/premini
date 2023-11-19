@@ -44,8 +44,8 @@
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
-            <a class="text-sm text-gray-400 hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
+            <a class="text-sm text-gray-400 hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800" href="{{ route('register') }}">
+                {{ __('Sign In') }}
             </a>
         </div>
     </form>

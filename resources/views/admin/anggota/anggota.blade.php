@@ -23,10 +23,10 @@
                                     {{-- tombol --}}
                                     <div class="flex justify-between mx-3 mt-4">
                                         <a href="anggota/edit/{{ $user->id }}"
-                                            class="block border border-blue-600 bg-blue-600 rounded-lg font-normal text-sm text-white px-2 py-1 me-4 hover:bg-blue-800 shadow-lg">Ubah</a>
+                                            class="block border border-blue-600 bg-blue-600 rounded-lg font-normal text-sm text-white px-2 py-1 me-4 hover:bg-blue-800 shadow-lg hover:border-blue-800">Ubah</a>
                                         <a href="anggota/delete/{{ $user->id }}"
                                             onclick="return confirm('yakin mau menghapus data ini?')"
-                                            class="block border border-red-600 bg-red-600 rounded-lg font-normal text-sm text-white px-2 py-1 hover:bg-red-800 shadow-lg">Hapus</a>
+                                            class="block border border-red-600 bg-red-600 rounded-lg font-normal text-sm text-white px-2 py-1 hover:bg-red-800 shadow-lg hover:border-red-800">Hapus</a>
                                     </div>
                                 </div>
                             @endforeach
