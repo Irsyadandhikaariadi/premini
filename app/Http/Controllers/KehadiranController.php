@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kehadiran;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KehadiranController extends Controller
 {
@@ -13,8 +15,9 @@ class KehadiranController extends Controller
      */
     public function index()
     {
-        //
-        return view('kehadiran.kehadiran');
+        $kehadiran = Kehadiran::where('id_user', Auth()->user()->id)->get();
+
+        return view('kehadiran.kehadiran', compact('kehadiran'));
     }
 
     /**
@@ -30,7 +33,23 @@ class KehadiranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::find($request->id_user);
+        $existingAbsence = Kehadiran::where('id_user', $user->id)
+            ->whereDate('tanggal', date('Y-m-d'))
+            ->first();
+
+        if ($existingAbsence) {
+            $existingAbsence->hadir = 1;
+            $existingAbsence->save();
+            return redirect()->route('kehadiran.user')->with('success', 'anda telah absen hari ini');
+        } else {
+            Kehadiran::create([
+                'id_user' => $user->id,
+                'tanggal' => date('Y-m-d'),
+                'hadir' => 1,
+            ]);
+            return redirect('/kehadiran')->with('success', 'Absen berhasil');
+        }
     }
 
     /**

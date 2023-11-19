@@ -16,13 +16,13 @@
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('latihan.user')" :active="request()->routeIs('latihan')">
+                        <x-nav-link :href="route('latihan.user')" :active="request()->routeIs('latihan.user')">
                             {{ __('Latihan') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">
+                        <x-nav-link :href="route('kehadiran.user')" :active="request()->routeIs('kehadiran.user')">
                             {{ __('Kehadiran') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('jadwal')" :active="request()->routeIs('jadwal')">
+                        <x-nav-link :href="route('jadwal.user')" :active="request()->routeIs('jadwal.user')">
                             {{ __('Jadwal') }}
                         </x-nav-link>
                     @endif
@@ -39,7 +39,7 @@
                         <x-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu.admin')">
                             {{ __('Womenu') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">
+                        <x-nav-link :href="route('kehadiran.user')" :active="request()->routeIs('kehadiran.user')">
                             {{ __('Kehadiran') }}
                         </x-nav-link>
                         <x-nav-link :href="route('jadwal')" :active="request()->routeIs('jadwal')">
@@ -113,10 +113,10 @@
                 <x-responsive-nav-link :href="route('latihan.user')" :active="request()->routeIs('latihan')">
                     {{ __('Latihan') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">
+                <x-responsive-nav-link :href="route('kehadiran.user')" :active="request()->routeIs('kehadiran.user')">
                     {{ __('Kehadiran') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('jadwal')" :active="request()->routeIs('jadwal')">
+                <x-responsive-nav-link :href="route('jadwal.user')" :active="request()->routeIs('jadwal.user')">
                     {{ __('Jadwal') }}
                 </x-responsive-nav-link>
             @endif

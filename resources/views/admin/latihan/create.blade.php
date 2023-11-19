@@ -49,25 +49,12 @@
                   <span class="invalid-feedback">{{ $message }}</span>
                 @enderror
               </div>
-              <div>
-                <div class="flex items-center mb-4">
-                  @foreach ($video as $video)
-                    <input id="video-checkbox-{{ $video->id_menu }}" name="id_menu[]" type="checkbox"
-                      value="{{ $video->id_menu }}"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-
-                    <video width="640" height="360" controls>
-                      @if ($video->video_url)
-                        <source src="{{ asset('storage/womenu/' . $video->video_url) }}" type="video/mp4">
-                      @endif
-                    </video>
-                  @endforeach
-                </div>
-                @error('id_menu')
-                  <span class="invalid-feedback" role="alert">
-                    {{ $message }}
-                  </span>
-                @enderror
+              <div class="flex items-center mb-4">
+                @foreach ($video as $video)
+                <input type="checkbox" id="checkbox" name="id_menu"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" value="{{ $video->id_menu }}">
+                {{ $video->nama }}
+                @endforeach
               </div>
               <button type="submit" class="p-2 border">tambah</button>
             </form>

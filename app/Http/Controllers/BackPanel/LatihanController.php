@@ -35,13 +35,12 @@ class LatihanController extends Controller
      */
     public function store(Request $request)
     {
+    
         $request->validate([
             'nama' => 'required|string',
             'jenis' => 'required|string',
             'deskripsi' => 'required|string',
             'gambar' => 'required|image|mimes:jpeg,png,jpg',
-            'id_menu' => 'required|array',
-            'id_menu.*' => 'in:id_menu',
         ]);
 
         // Process image upload
@@ -53,9 +52,11 @@ class LatihanController extends Controller
         $latihan = Latihan::create([
             'nama' => $request->input('nama'),
             'jenis' => $request->input('jenis'),
+            'id_menu' => $request->id_menu,
             'deskripsi' => $request->input('deskripsi'),
             'gambar' => $nama_gambar,
         ]);
+        
 
         // Redirect the user to the list of latihan.
         return redirect()->route('latihan.admin')->with('success', 'Berhasil menambah data latihan');

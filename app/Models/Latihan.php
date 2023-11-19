@@ -28,7 +28,7 @@ class Latihan extends Model
      */
     public function menuLatihan(): BelongsTo
     {
-        return $this->belongsTo(MenuLatihan::class, 'id_menu', 'id_menu');
+        return $this->belongsTo(menuLatihan::class, 'id_menu');
     }
 
 }

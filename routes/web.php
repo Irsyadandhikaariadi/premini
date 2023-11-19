@@ -34,8 +34,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/latihan', [LatihanController::class, 'index'])->name('latihan.user');
-    Route::get('/kehadiran', [KehadiranController::class, 'index'])->name('kehadiran');
-    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal');
+    Route::get('/kehadiran', [KehadiranController::class, 'index'])->name('kehadiran.user');
+    Route::post('/kehadiran', [KehadiranController::class, 'store'])->name('kehadiran.store');
+    Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.user');
+    Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create');
+    Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
+    Route::get('/jadwal/delete', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
 });
 
 require __DIR__ . '/auth.php';
@@ -48,14 +52,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/anggota/delete/{id}', [BackPanelAnggotaController::class, 'destroy'])->name('anggota.destroy');
     Route::get('/admin/latihan', [BackPanelLatihanController::class, 'index'])->name('latihan.admin');
     Route::get('/admin/latihan/create', [BackPanelLatihanController::class, 'create'])->name('latihan.create');
-    Route::post('/admin/latihan/create', [BackPanelLatihanController::class, 'store'])->name('latihan.store');
+    Route::post('/admin/latihan/store', [BackPanelLatihanController::class, 'store'])->name('latihan.store');
     Route::get('/admin/latihan/show/{id}', [BackPanelLatihanController::class, 'show'])->name('latihan.show');
     Route::get('/admin/latihan/edit/{id}', [BackPanelLatihanController::class, 'edit'])->name('latihan.edit');
     Route::put('/admin/latihan/edit/{id}', [BackPanelLatihanController::class, 'update'])->name('latihan.update');
     Route::get('/admin/latihan/delete/{id}', [BackPanelLatihanController::class, 'destroy'])->name('latihan.destroy');
     Route::get('/admin/woMenu', [WoMenuController::class, 'index'])->name('womenu.admin');
     Route::get('/admin/woMenu/create', [WoMenuController::class, 'create'])->name('womenu.create');
-    Route::post('/admin/woMenu/create', [WoMenuController::class, 'store'])->name('womenu.store');
+    Route::post('/admin/woMenu/store', [WoMenuController::class, 'store'])->name('womenu.store');
     Route::get('/admin/woMenu/edit/{id}', [WoMenuController::class, 'edit'])->name('womenu.edit');
     Route::put('/admin/woMenu/edit/{id}', [WoMenuController::class, 'update'])->name('womenu.update');
     Route::get('/admin/woMenu/delete/{id}', [WoMenuController::class, 'destroy'])->name('womenu.destroy');

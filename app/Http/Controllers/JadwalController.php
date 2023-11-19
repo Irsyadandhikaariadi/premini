@@ -14,6 +14,7 @@ class JadwalController extends Controller
     public function index()
     {
         //
+        
         return view('jadwal.jadwal');
     }
 
@@ -23,6 +24,7 @@ class JadwalController extends Controller
     public function create()
     {
         //
+     return view('jadwal.create');
     }
 
     /**
@@ -31,6 +33,12 @@ class JadwalController extends Controller
     public function store(Request $request)
     {
         //
+        Jadwal::create([
+            'tanggal' => $request->tanggal,
+            'note' => $request->note,
+            'jam' => $request->jam,
+        ]);
+        return redirect()->route('jadwal.user')->with('success', 'berhasil menambah notes');
     }
 
     /**
