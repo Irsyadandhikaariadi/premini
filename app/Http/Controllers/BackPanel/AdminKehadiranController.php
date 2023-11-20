@@ -14,6 +14,7 @@ class AdminKehadiranController extends Controller
     public function index()
     {
         //
+        return view('admin.kehadiran.kehadiran');
     }
 
     /**
