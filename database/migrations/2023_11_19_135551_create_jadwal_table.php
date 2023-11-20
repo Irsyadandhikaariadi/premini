@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id('id_jadwal');
+            $table->foreignId('id_user')->constrained('users');
             $table->date('tanggal');
             $table->string('note');
-            $table->dateTime('waktu');
+            $table->time('waktu');
             $table->timestamps();
         });
     }

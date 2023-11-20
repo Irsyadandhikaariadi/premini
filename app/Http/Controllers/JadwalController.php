@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Jadwal;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class JadwalController extends Controller
 {
@@ -14,8 +16,8 @@ class JadwalController extends Controller
     public function index()
     {
         //
-        
-        return view('jadwal.jadwal');
+        $jadwal = Jadwal::where('id_user', Auth()->user()->id)->get();
+        return view('jadwal.jadwal', compact('jadwal'));
     }
 
     /**
@@ -34,9 +36,10 @@ class JadwalController extends Controller
     {
         //
         Jadwal::create([
+            'id_user' => Auth()->user()->id,
             'tanggal' => $request->tanggal,
             'note' => $request->note,
-            'jam' => $request->jam,
+            'waktu' => $request->waktu,
         ]);
         return redirect()->route('jadwal.user')->with('success', 'berhasil menambah notes');
     }

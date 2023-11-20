@@ -11,7 +11,7 @@
                     <label for="note">note</label>
                     <input type="text" name="note" class="placeholder-black text-black">
                     <label for="jam">jam</label>
-                    <input type="time" name="jam" value="12:00" class="placeholder-black text-black">
+                    <input type="time" name="waktu" class="placeholder-black text-black">
                     <button type="submit">tambah notes</button>
                   </form>
               </div>
