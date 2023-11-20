@@ -39,10 +39,10 @@
                         <x-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu.admin')">
                             {{ __('Womenu') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('kehadiran.user')" :active="request()->routeIs('kehadiran.user')">
+                        <x-nav-link :href="route('kehadiran.admin')" :active="request()->routeIs('kehadiran.admin')">
                             {{ __('Kehadiran') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('jadwal')" :active="request()->routeIs('jadwal')">
+                        <x-nav-link :href="route('jadwal.admin')" :active="request()->routeIs('jadwal.admin')">
                             {{ __('Jadwal') }}
                         </x-nav-link>
                     @endif
@@ -133,10 +133,10 @@
                 <x-responsive-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu')">
                     {{ __('Womenu') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('kehadiran')" :active="request()->routeIs('kehadiran')">
+                <x-responsive-nav-link :href="route('kehadiran.admin')" :active="request()->routeIs('kehadiran.admin')">
                     {{ __('Kehadiran') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('jadwal')" :active="request()->routeIs('jadwal')">
+                <x-responsive-nav-link :href="route('jadwal.admin')" :active="request()->routeIs('jadwal.admin')">
                     {{ __('Jadwal') }}
                 </x-responsive-nav-link>
             @endif
