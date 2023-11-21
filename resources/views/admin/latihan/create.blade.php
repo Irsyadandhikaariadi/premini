@@ -7,7 +7,7 @@
       <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 text-gray-900 dark:text-gray-100">
           <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <form action="{{ route('latihan.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('latihan.store') }}" method="POST" enctype="multipart/form-data">
               @csrf
               <div>
                 <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">nama</label>
@@ -51,8 +51,8 @@
               </div>
               <div class="flex items-center mb-4">
                 @foreach ($video as $video)
-                <input type="checkbox" id="checkbox" name="id_menu"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" value="{{ $video->id_menu }}">
+                <input type="checkbox" name="video[]" value="{{ $video->id_menu }}"
+                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                 {{ $video->nama }}
                 @endforeach
               </div>

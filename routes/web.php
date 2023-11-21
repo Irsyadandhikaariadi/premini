@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\BackPanel\AdminJadwalController;
-use App\Http\Controllers\BackPanel\AdminKehadiranController;
+use App\Http\Controllers\AdminKehadiranController;
 use App\Http\Controllers\BackPanel\AdminController;
 use App\Http\Controllers\BackPanel\AnggotaController as BackPanelAnggotaController;
 use App\Http\Controllers\BackPanel\LatihanController as BackPanelLatihanController;
@@ -67,5 +66,4 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/woMenu/delete/{id}', [WoMenuController::class, 'destroy'])->name('womenu.destroy');
     Route::get('/admin/woMenu/delete/{id}', [WoMenuController::class, 'destroy'])->name('womenu.destroy');
     Route::get('/admin/kehadiran', [AdminKehadiranController::class, 'index'])->name('kehadiran.admin');
-    Route::get('/admin/jadwal', [AdminJadwalController::class, 'index'])->name('jadwal.admin');
 });

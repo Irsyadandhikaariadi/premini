@@ -35,12 +35,12 @@ class LatihanController extends Controller
      */
     public function store(Request $request)
     {
-    
+        // dd($request->all());
         $request->validate([
             'nama' => 'required|string',
             'jenis' => 'required|string',
             'deskripsi' => 'required|string',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg'
         ]);
 
         // Process image upload
@@ -50,14 +50,12 @@ class LatihanController extends Controller
 
         // Create a new Latihan model.
         $latihan = Latihan::create([
-            'nama' => $request->input('nama'),
-            'jenis' => $request->input('jenis'),
-            'id_menu' => $request->id_menu,
-            'deskripsi' => $request->input('deskripsi'),
+            'id_menu' => json_encode($request->video),
+            'nama' => $request->nama,
+            'jenis' => $request->jenis,
+            'deskripsi' => $request->deskripsi,
             'gambar' => $nama_gambar,
         ]);
-        
-
         // Redirect the user to the list of latihan.
         return redirect()->route('latihan.admin')->with('success', 'Berhasil menambah data latihan');
     }
@@ -66,17 +64,27 @@ class LatihanController extends Controller
     /**
      * Display the specified resource.
      */
+
     public function show($id)
     {
-        $latihan = Latihan::findOrFail($id);
-        $womenu = Latihan::with('menuLatihan')->get();
-
+        $latihan = Latihan::with('menuLatihan')->findOrFail($id);
+        
         if (!$latihan) {
             return redirect()->route('latihan.admin')->with('error', 'Latihan tidak ditemukan.');
         }
+        
+        $id_menu_array = explode(",", $latihan->id_menu);
+        
+        $video_urls = [];
+        foreach ($id_menu_array as $id_menu) {
+            $menu_latihan = MenuLatihan::find($id_menu);
+            $video_urls[] = asset('storage/womenu/' . $menu_latihan->video_url);
+            dd($id_menu);
+        }
 
-        return view('admin.latihan.show', compact('womenu'));
+        return view('admin.latihan.show', compact('latihan', 'video_urls'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

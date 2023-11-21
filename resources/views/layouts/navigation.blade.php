@@ -42,9 +42,6 @@
                         <x-nav-link :href="route('kehadiran.admin')" :active="request()->routeIs('kehadiran.admin')">
                             {{ __('Kehadiran') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('jadwal.admin')" :active="request()->routeIs('jadwal.admin')">
-                            {{ __('Jadwal') }}
-                        </x-nav-link>
                     @endif
                 </div>
             </div>
@@ -127,17 +124,14 @@
                 <x-responsive-nav-link :href="route('anggota')" :active="request()->routeIs('anggota')">
                     {{ __('Anggota') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('latihan.admin')" :active="request()->routeIs('latihan')">
+                <x-responsive-nav-link :href="route('latihan.admin')" :active="request()->routeIs('latihan.admin')">
                     {{ __('Latihan') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu')">
+                <x-responsive-nav-link :href="route('womenu.admin')" :active="request()->routeIs('womenu.admin')">
                     {{ __('Womenu') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('kehadiran.admin')" :active="request()->routeIs('kehadiran.admin')">
                     {{ __('Kehadiran') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('jadwal.admin')" :active="request()->routeIs('jadwal.admin')">
-                    {{ __('Jadwal') }}
                 </x-responsive-nav-link>
             @endif
         </div>

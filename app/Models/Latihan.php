@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Latihan extends Model
 {
@@ -12,7 +13,7 @@ class Latihan extends Model
 
     protected $primaryKey = 'id';
     protected $table = 'latihan';
-    
+
     protected $fillable = [
         'nama',
         'id_menu',
@@ -20,15 +21,8 @@ class Latihan extends Model
         'deskripsi',
         'gambar',
     ];
-
-    /**
-     * Get the user that owns the Latihan
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function menuLatihan(): BelongsTo
     {
-        return $this->belongsTo(menuLatihan::class, 'id_menu');
+        return $this->belongsTo(MenuLatihan::class, 'id_menu', 'id_menu');
     }
-
 }
