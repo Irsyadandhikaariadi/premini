@@ -17,7 +17,7 @@ class JadwalController extends Controller
     {
         //
         $jadwal = Jadwal::where('id_user', Auth()->user()->id)->get();
-        return view('jadwal.jadwal', compact('jadwal'));
+        return view('jadwal.jadwal', compact('jadwal')); 
     }
 
     /**
