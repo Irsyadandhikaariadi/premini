@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jadwal;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,22 +16,25 @@ class JadwalController extends Controller
      */
     public function index()
     {
-        //
-        // Mengambil tanggal hari ini
-        $today = now();
+        $weekDays = [];
+        $startDate = Carbon::now()->startOfWeek();
 
-        // Mendapatkan tanggal awal minggu ini
-        $startOfWeek = $today->startOfWeek();
-
-        // Membuat array hari-hari dalam seminggu
-        $daysOfWeek = [];
         for ($i = 0; $i < 7; $i++) {
-            $day = $startOfWeek->copy()->addDays($i);
-            $daysOfWeek[] = $day;
+            $date = $startDate->copy()->addDays($i);
+            $formattedDate = $date->translatedFormat('d F Y');
+
+            $notes = Jadwal::whereDate('tanggal', $date->format('Y-m-d'))->get();
+
+            $weekDays[] = [
+                'dayName' => $date->translatedFormat('d l'),
+                'date' => $formattedDate,
+                'notes' => $notes
+            ];
         }
 
         $jadwal = Jadwal::where('id_user', Auth()->user()->id)->get();
-        return view('jadwal.jadwal', compact('jadwal', 'daysOfWeek')); 
+
+        return view('jadwal.jadwal', compact('jadwal', 'weekDays'));
     }
 
     /**
@@ -39,7 +43,7 @@ class JadwalController extends Controller
     public function create()
     {
         //
-     return view('jadwal.create');
+        return view('jadwal.create');
     }
 
     /**

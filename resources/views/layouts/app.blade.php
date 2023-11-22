@@ -27,6 +27,7 @@
       document.documentElement.classList.remove('dark')
     }
   </script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="font-sans antialiased">
