@@ -16,8 +16,21 @@ class JadwalController extends Controller
     public function index()
     {
         //
+        // Mengambil tanggal hari ini
+        $today = now();
+
+        // Mendapatkan tanggal awal minggu ini
+        $startOfWeek = $today->startOfWeek();
+
+        // Membuat array hari-hari dalam seminggu
+        $daysOfWeek = [];
+        for ($i = 0; $i < 7; $i++) {
+            $day = $startOfWeek->copy()->addDays($i);
+            $daysOfWeek[] = $day;
+        }
+
         $jadwal = Jadwal::where('id_user', Auth()->user()->id)->get();
-        return view('jadwal.jadwal', compact('jadwal')); 
+        return view('jadwal.jadwal', compact('jadwal', 'daysOfWeek')); 
     }
 
     /**
