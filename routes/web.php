@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/jadwal', [JadwalController::class, 'index'])->name('jadwal.user');
     Route::get('/jadwal/create', [JadwalController::class, 'create'])->name('jadwal.create');
     Route::post('/jadwal/store', [JadwalController::class, 'store'])->name('jadwal.store');
-    Route::get('/jadwal/delete', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
+    Route::delete('/jadwal/delete/{Jadwal}', [JadwalController::class, 'destroy'])->name('jadwal.destroy');
 });
 
 require __DIR__ . '/auth.php';

@@ -16,9 +16,10 @@
   <!-- Scripts -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+  {{-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" /> --}}
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
-  <script>
+  {{-- <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
     if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia(
         '(prefers-color-scheme: dark)').matches)) {
@@ -26,8 +27,7 @@
     } else {
       document.documentElement.classList.remove('dark')
     }
-  </script>
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  </script> --}}
 </head>
 
 <body class="font-sans antialiased">
@@ -39,8 +39,16 @@
       {{ $slot }}
     </main>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
   <script>
+    const modeToggle = document.getElementById('mode-toggle');
+    const body = document.body;
+
+    modeToggle.addEventListener('click', function() {
+      body.classList.toggle('dark');
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
+  {{-- <script>
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
@@ -82,7 +90,7 @@
       }
 
     });
-  </script>
+  </script> --}}
 </body>
 
 </html>

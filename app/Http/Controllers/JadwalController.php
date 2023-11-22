@@ -26,13 +26,15 @@ class JadwalController extends Controller
             $notes = Jadwal::whereDate('tanggal', $date->format('Y-m-d'))->get();
 
             $weekDays[] = [
-                'dayName' => $date->translatedFormat('d l'),
+                'day' => $date->translatedFormat('d'),
+                'dayName' => $date->translatedFormat('l'),
                 'date' => $formattedDate,
-                'notes' => $notes
+                'notes' => $notes,
+                'isActive' => $date->isToday()
             ];
         }
 
-        $jadwal = Jadwal::where('id_user', Auth()->user()->id)->get();
+        $jadwal = Jadwal::where('id_user', Auth()->user()->id)->first();
 
         return view('jadwal.jadwal', compact('jadwal', 'weekDays'));
     }
@@ -88,8 +90,11 @@ class JadwalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Jadwal $jadwal)
+    public function destroy(Jadwal $Jadwal)
     {
         //
+        $Jadwal->delete(); // Menghapus jadwal
+
+        return redirect()->back()->with('success', 'berhasil menghapus notes');
     }
 }
