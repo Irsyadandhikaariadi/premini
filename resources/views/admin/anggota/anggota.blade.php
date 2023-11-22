@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    @include('components.toast');
+    @include('components.toast')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

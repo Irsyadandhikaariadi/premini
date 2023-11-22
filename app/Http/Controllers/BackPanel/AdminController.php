@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers\BackPanel;
 
+use App\Charts\HadirChart;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(HadirChart $chart)
     {
-        //
-        return view('admin.dashboard');
+        return view('admin.dashboard', ['chart'=> $chart->build()]);
     }
 
     /**
