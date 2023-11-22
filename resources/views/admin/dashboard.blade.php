@@ -57,7 +57,7 @@
                             </div>
                             {{-- akhir statistik --}}
                         </div>
-                        <div class="bg-gray-600 rounded-lg max-w-5xl py-3 px-1 relative">
+                        <div class="bg-gray-600 rounded-lg max-w-5xl w-full h-full py-3 px-1 relative">
                             <h1 class="text-lg font-medium ms-3">Statistik</h1>
                             <div class="flex justify-center mx-12 flex-wrap">
                                 <div class="bg-gray-700 rounded-lg max-w-2xl w-full py-3 my-3 ms-2">
