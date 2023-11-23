@@ -54,7 +54,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/latihan', [BackPanelLatihanController::class, 'index'])->name('latihan.admin');
     Route::get('/admin/latihan/create', [BackPanelLatihanController::class, 'create'])->name('latihan.create');
     Route::post('/admin/latihan/store', [BackPanelLatihanController::class, 'store'])->name('latihan.store');
-    Route::get('/admin/latihan/show/{id}', [BackPanelLatihanController::class, 'show'])->name('latihan.show');
+    Route::get('/admin/latihan/show/{latihan}', [BackPanelLatihanController::class, 'show'])->name('latihan.show');
     Route::get('/admin/latihan/edit/{id}', [BackPanelLatihanController::class, 'edit'])->name('latihan.edit');
     Route::put('/admin/latihan/edit/{id}', [BackPanelLatihanController::class, 'update'])->name('latihan.update');
     Route::get('/admin/latihan/delete/{id}', [BackPanelLatihanController::class, 'destroy'])->name('latihan.destroy');

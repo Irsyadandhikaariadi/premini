@@ -533,6 +533,7 @@ class ComposerStaticInit8b04cf59205c10f29747a349da6a29c0
     );
 
     public static $classMap = array (
+        'App\\Charts\\HadirChart' => __DIR__ . '/../..' . '/app/Charts/HadirChart.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminKehadiranController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminKehadiranController.php',

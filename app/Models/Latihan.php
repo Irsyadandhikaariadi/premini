@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Latihan extends Model
@@ -21,8 +22,9 @@ class Latihan extends Model
         'deskripsi',
         'gambar',
     ];
-    public function menuLatihan(): BelongsTo
+
+    public function menuLatihan()
     {
-        return $this->belongsTo(MenuLatihan::class, 'id_menu', 'id_menu');
+        return $this->belongsTo(MenuLatihan::class, 'id_menu');
     }
 }

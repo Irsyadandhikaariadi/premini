@@ -65,26 +65,13 @@ class LatihanController extends Controller
      * Display the specified resource.
      */
 
-    public function show($id)
+    public function show(Latihan $latihan)
     {
-        $latihan = Latihan::with('menuLatihan')->findOrFail($id);
+        $menuLatihan = Latihan::with('menuLatihan')->get();
+        // dd($menuLatihan);
         
-        if (!$latihan) {
-            return redirect()->route('latihan.admin')->with('error', 'Latihan tidak ditemukan.');
-        }
-        
-        $id_menu_array = explode(",", $latihan->id_menu);
-        
-        $video_urls = [];
-        foreach ($id_menu_array as $id_menu) {
-            $menu_latihan = MenuLatihan::find($id_menu);
-            $video_urls[] = asset('storage/womenu/' . $menu_latihan->video_url);
-            dd($id_menu);
-        }
-
-        return view('admin.latihan.show', compact('latihan', 'video_urls'));
+        return view('admin.latihan.show', compact('latihan', 'menuLatihan'));
     }
-
 
     /**
      * Show the form for editing the specified resource.

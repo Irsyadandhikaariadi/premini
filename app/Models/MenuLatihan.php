@@ -15,5 +15,8 @@ class MenuLatihan extends Model
         'nama',
         'video_url'
     ];
-
+    public function latihan()
+    {
+        return $this->hasMany(Latihan::class, 'id_menu');
+    }
 }
