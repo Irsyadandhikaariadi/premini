@@ -8,12 +8,12 @@
           <form action="{{ route('kehadiran.store') }}" method="post">
             @csrf
             <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
-            <button type="submit" class="btn btn-primary">Absen</button>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              Absen
+            </button>
           </form>
-          <h1>Kehadiran</h1>
-
           <div class="relative overflow-x-auto">
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 mt-4">
               <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" class="px-6 py-3">
@@ -41,9 +41,9 @@
                     </td>
                     <td class="px-6 py-4">
                       @if ($k->hadir == 1)
-                        Hadir
+                        <span class="text-green-500">Hadir</span>
                       @else
-                        Tidak Hadir
+                        <span class="text-red-500">Tidak Hadir</span>
                       @endif
                     </td>
                     <td class="px-6 py-4">

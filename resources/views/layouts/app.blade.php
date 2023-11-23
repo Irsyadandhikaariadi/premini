@@ -18,6 +18,9 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
+
+  <style>
+  </style>
 </head>
 
 <body class="font-sans antialiased">
@@ -29,14 +32,6 @@
       {{ $slot }}
     </main>
   </div>
-  <script>
-    const modeToggle = document.getElementById('mode-toggle');
-    const body = document.body;
-
-    modeToggle.addEventListener('click', function() {
-      body.classList.toggle('dark');
-    });
-  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.js"></script>
 </body>
 

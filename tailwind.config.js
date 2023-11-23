@@ -23,8 +23,3 @@ export default {
 
     plugins: [forms],
 };
-
-module.exports = {
-    //...
-    plugins: [require("daisyui")],
-}
